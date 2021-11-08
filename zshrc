@@ -25,7 +25,7 @@ bold=$(tput bold)
 normal=$(tput sgr0)
 
 function syu {
-        cd /Users/jwilcox/src/github.com/Shopify
+        cd $HOME/src/github.com/Shopify
         for di in *; do
         if [ -d $di ]; then
         cd $di;
