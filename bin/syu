@@ -1,0 +1,18 @@
+#!/bin/bash
+bold=$(tput bold)
+normal=$(tput sgr0)
+
+cd $HOME/src/github.com/Shopify
+for di in *; do
+if [ -d $di ]; then
+cd $di;
+if [ -d .git ]; then
+    printf "\n${bold}%s${normal}\n" `pwd`;
+    git branch;
+    echo;
+    git pull;
+    if [ "$1" == '-p' ]; then read -s -n1 -p 'Continue?'; fi; #pause after each
+fi;
+cd ..;
+fi;
+done
