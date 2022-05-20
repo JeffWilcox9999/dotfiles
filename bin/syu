@@ -12,6 +12,7 @@ if [ -d .git ]; then
     echo;
     git pull;
     if [ "$1" == '-p' ]; then read -s -n1 -p 'Continue?'; fi; #pause after each
+    clear;
 fi;
 cd ..;
 fi;
