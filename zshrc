@@ -1,15 +1,25 @@
 [ -f /opt/dev/dev.sh ] && source /opt/dev/dev.sh
 
-if [ -e /Users/jwilcox/.nix-profile/etc/profile.d/nix.sh ]; then . /Users/jwilcox/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
+# added by Nix installer
+if [ -e /Users/jwilcox/.nix-profile/etc/profile.d/nix.sh ]; then . /Users/jwilcox/.nix-profile/etc/profile.d/nix.sh; fi
 
 # three directories up of context %2 for two
 PROMPT='%3~: '
 
-HISTSIZE=99999
-HISTFILESIZE=99999
-SAVEHIST=$HISTSIZE
-setopt HIST_IGNORE_DUPS
-setopt HIST_IGNORE_SPACE
+if [ "$SPIN" ]; then
+	export HISTFILE=/home/spin/zsh_history
+	export HISTSIZE=5000
+	export SAVEHIST=9000
+
+	setopt HIST_FIND_NO_DUPS
+	setopt INC_APPEND_HISTORY
+else
+        HISTSIZE=99999
+        HISTFILESIZE=99999
+        SAVEHIST=$HISTSIZE
+        setopt HIST_IGNORE_DUPS
+        setopt HIST_IGNORE_SPACE
+fi
 
 alias h="history"
 alias hgrep="history 1|grep"
